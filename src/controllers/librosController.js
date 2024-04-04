@@ -22,13 +22,15 @@ exports.consultarTodosLibros = async (req, res) => {
 exports.consultarLibrosPorCaracteristica = async (req, res) => {
     try {
         const query = {};
-        const { precio, editorial, autor, fecha, categoria } = req.query;
+        const { precio, editorial, autor, fecha, categoria, idioma, formato } = req.query;
 
         if (precio) query.precio = precio;
         if (editorial) query.editorial = editorial;
         if (autor) query.autor = autor;
         if (fecha) query.fecha = fecha;
         if (categoria) query.categoria = categoria;
+        if (idioma) query.idioma = idioma;
+        if (formato) query.formato = formato;
 
         const libros = await Libro.find(query);
         res.json(libros);
