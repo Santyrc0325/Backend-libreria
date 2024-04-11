@@ -11,15 +11,15 @@ mongoose.connect('mongodb+srv://admin:sLGZLzx59bDHj7lI@cluster0testeo.7iajvcj.mo
     .then(() => console.log('Conectado a MongoDB'))
     .catch((error) => console.error('No se pudo conectar a MongoDB', error));
 
-const sequelize = new Sequelize('libreria', 'andresmosquera', 'abogadoColmenares123?*', {
-    host: '35.225.222.50',
-    port: 3306,
-    dialect: 'mysql'
-});
+// const sequelize = new Sequelize('libreria', 'andresmosquera', 'abogadoColmenares123?*', {
+//     host: '35.225.222.50',
+//     port: 3306,
+//     dialect: 'mysql'
+// });
 
-sequelize.authenticate()
-    .then(() => console.log('Conectado a MySQL'))
-    .catch((error) => console.error('No se pudo conectar a MySQL', error));
+// sequelize.authenticate()
+//     .then(() => console.log('Conectado a MySQL'))
+//     .catch((error) => console.error('No se pudo conectar a MySQL', error));
 
 const authRoutes = require('./routes/authRoutes');
 const librosRoutes = require('./routes/librosRoutes');
