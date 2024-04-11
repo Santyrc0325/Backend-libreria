@@ -29,6 +29,7 @@ const libroSchema = new mongoose.Schema({
     descripcion: { type: String, required: true },
     score: { type: Number },
     precio: { type: Number, required: true },
+    imagenURL: { type: String, required: true },
 });
 
 const Libro = mongoose.model('Libro', libroSchema);
