@@ -19,22 +19,25 @@ exports.consultarTodosLibros = async (req, res) => {
     }
 };
 
-exports.consultarLibrosPorCaracteristica = async (req, res) => {
+exports.consultarLibrosPorCategoria = async (req, res) => {
     try {
-        const query = {};
-        const { precio, editorial, autor, fecha, categoria, idioma, formato } = req.query;
+        const { categoria } = req.params;
 
-        if (precio) query.precio = precio;
-        if (editorial) query.editorial = editorial;
-        if (autor) query.autor = autor;
-        if (fecha) query.fecha = fecha;
-        if (categoria) query.categoria = categoria;
-        if (idioma) query.idioma = idioma;
-        if (formato) query.formato = formato;
+        const categoriasPermitidas = [
+            'Clásicos', 'Filosofía', 'Biografía', 'Autoayuda', 'Ciencia Ficción',
+            'Ciencia', 'Novelas', 'Economía', 'Arte', 'Salud y bienestar', 'Historia', 'Negocios'
+        ];
 
+        if (!categoriasPermitidas.includes(categoria)) {
+            return res.status(400).json({ error: 'Categoría no permitida' });
+        }
+
+        const query = { categoria };
         const libros = await Libro.find(query);
         res.json(libros);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
+
+
