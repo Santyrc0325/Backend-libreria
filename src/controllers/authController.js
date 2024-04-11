@@ -5,10 +5,6 @@ const SECRET_KEY = 'libreriaFibonnacci123';
 
 exports.registrarUsuario = async (req, res) => {
     try {
-        if (!req.body.rol || (req.body.rol !== 'comprador' && req.body.rol !== 'vendedor')) {
-            return res.status(400).json({ mensaje: "El rol especificado es inválido" });
-        }
-
         const nuevoUsuario = new Usuario(req.body);
         await nuevoUsuario.save();
         res.status(201).json({ mensaje: "Usuario registrado exitosamente" });
