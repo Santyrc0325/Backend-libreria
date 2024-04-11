@@ -5,6 +5,6 @@ const verificarToken = require('../middleware/verificarToken');
 
 router.post('/crearLibro', verificarToken, crearLibro);
 router.get('/consultaLibros', consultarTodosLibros);
-router.get('/librosPorCategoria/:categoria', verificarToken, consultarLibrosPorCategoria);
+router.get('/librosPorCategoria/:categoria', consultarLibrosPorCategoria);
 
 module.exports = router;

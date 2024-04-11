@@ -22,6 +22,7 @@ exports.consultarTodosLibros = async (req, res) => {
 exports.consultarLibrosPorCategoria = async (req, res) => {
     try {
         const { categoria } = req.params;
+        console.log("Categoría solicitada:", categoria);
 
         const categoriasPermitidas = [
             'Clásicos', 'Filosofía', 'Biografía', 'Autoayuda', 'Ciencia Ficción',
